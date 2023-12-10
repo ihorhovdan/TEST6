@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifica Prodotto</title>
+</head>
+<body>
+    <h1>Modifica Prodotto</h1>
+    <section>
+        <a href="index.html"> <button>Torna indietro</button></a>
+    </section>
+
+    <form id="updateProductForm">
+        <form id="newProductForm">
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" required>
+            <br>
+    
+            <label for="productDescription">Product Description:</label>
+            <textarea id="productDescription" required></textarea>
+            <br>
+    
+            <label for="productBrand">Product Brand:</label>
+            <input type="text" id="productBrand" required>
+            <br>
+    
+            <label for="productImageUrl">Product Image URL:</label>
+            <input type="text" id="productImageUrl" required>
+            <br>
+    
+            <label for="productPrice">Product Price:</label>
+            <input type="number" id="productPrice" required>
+            <br>
+    
+            
+            
+            
+        </form>
+        <button type="button" onclick="updateProduct()">Aggiorna Prodotto</button>
+        <button type="button" onclick="resetForm()">Reset</button>
+    </form>
+
+    <script src="/assets/javascript/modifica.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Inserimento</title>
+</head>
+<body>
+    <h1>Pagina Inserimento</h1>
+    <section>
+        <a href="index.html"> <button>Torna indietro</button></a>
+    </section>
+
+
+    <form id="newProductForm">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" required>
+        <br>
+
+        <label for="productDescription">Product Description:</label>
+        <textarea id="productDescription" required></textarea>
+        <br>
+
+        <label for="productBrand">Product Brand:</label>
+        <input type="text" id="productBrand" required>
+        <br>
+
+        <label for="productImageUrl">Product Image URL:</label>
+        <input type="text" id="productImageUrl" required>
+        <br>
+
+        <label for="productPrice">Product Price:</label>
+        <input type="number" id="productPrice" required>
+        <br>
+
+        <button type="button" onclick="createNewProduct()">Create New Product</button>
+        <button type="button" onclick="resetForm()">Reset <Form></Form></button>
+        
+        
+    </form>
+    <script>
+        function createNewProduct() {
+            const productName = document.getElementById('productName').value;
+            const productDescription = document.getElementById('productDescription').value;
+            const productBrand = document.getElementById('productBrand').value;
+            const productImageUrl = document.getElementById('productImageUrl').value;
+            const productPrice = document.getElementById('productPrice').value;
+
+            
+
+            const newProduct = {
+                name: productName,
+                description: productDescription,
+                brand: productBrand,
+                imageUrl: productImageUrl,
+                price: productPrice,
+
+            };
+
+            fetch("https://striveschool-api.herokuapp.com/api/product/", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTczNzg5YmZlMDMxZTAwMTliYTFjNzkiLCJpYXQiOjE3MDIxMjIzNzksImV4cCI6MTcwMzMzMTk3OX0.uokuMAx6YhCi8aZnzunCiwmlkDDD2keYesbygMBERUU',
+                },
+                body: JSON.stringify(newProduct), 
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("New product created:", data);
+            })
+
+        }
+
+        function resetForm() {
+        const form = document.getElementById('newProductForm');
+        form.reset();
+        }
+
+       
+        
+    
+    </script>
+    <script src="/assets/javascript/script.js"></script> 
+</body>
+</html>
